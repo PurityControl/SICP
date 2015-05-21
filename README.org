@@ -1,0 +1,30 @@
+#+TITLE: Workings and Notes on SICP Book
+
+* SICP
+
+The SICP book is available [[https://mitpress.mit.edu/sicp/full-text/book/book.html][online]]
+
+* Other Resources
+
+[[https://mitpress.mit.edu/sicp/][MIT Press SICP webpage]]
+[[http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/1a-overview-and-introduction-to-lisp/][SICP Videos]]
+
+** Derivative Books
+[[https://github.com/sarabander/sicp-pdf][SICP pdf]]
+[[https://github.com/sarabander/sicp][SICP HTML 5 and epub]]
+[[https://sicpebook.wordpress.com/][Website dedicated to SICP book in different formats]]
+
+
+** Other Solutions
+[[https://github.com/qiao/sicp-solutions]]
+[[http://community.schemewiki.org/?sicp-solutions]]
+
+
+* License
+
+The SICP book is released under the
+[[https://creativecommons.org/licenses/by-sa/4.0/][Creative Commons Attribution-ShareAlike 4.0 International License]]
+
+This license requires derivative works to be licensed under the
+same license and so this repository shares this [[file:LICENSE][license]]
+
