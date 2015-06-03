@@ -12,3 +12,25 @@ given by the value of a at the end of the process. In general, the technique of
 defining an invariant quantity that remains unchanged from state to state is a
 powerful way to think about the design of iterative algorithms.)
 |#
+
+(define (fast-expt b n)
+  (define (square n)
+    (* n n))
+  (define (expt-iter b n acc)
+    (cond
+      ((= n 0) acc)
+      ((odd? n) (expt-iter b (sub1 n) (* acc b)))
+      (else
+       (expt-iter (square b) (/ n 2) acc))))
+  (expt-iter b n 1))
+
+(require rackunit rackunit/text-ui)
+
+(define file-tests
+  (test-suite
+   "test to make sure expt produces same result as library"
+   (check-equal? (fast-expt 2 256) (expt 2 256))
+   (check-equal? (fast-expt 3 35) (expt 3 35))
+   (check-equal? (fast-expt 5 15) (expt 5 15))))
+
+(run-tests file-tests)
