@@ -19,3 +19,28 @@ and halve, which divides an (even) integer by 2. Using these, design a
 multiplication procedure analogous to fast-expt that uses a logarithmic number
 of steps.
 |#
+
+(define (fast-mult b n)
+  (define (double n)
+    (* n 2))
+  (define (halve n)
+    ; could throw an error if odd, but not for this exercise
+    (/ n 2))
+  (define (mult-iter b n acc)
+    (cond
+      ((= n 0) acc)
+      ((odd? n) (mult-iter b (sub1 n) (+ acc b)))
+      (else
+       (mult-iter (double b) (halve n) acc))))
+  (mult-iter b n 0))
+
+(require rackunit rackunit/text-ui)
+
+(define file-tests
+  (test-suite
+   "test to make sure expt produces same result as library"
+   (check-equal? (fast-mult 256 256) (* 256 256))
+   (check-equal? (fast-mult 1356 4328) (* 1356 4328))
+   (check-equal? (fast-mult 1865 1753) (* 1865 1753))))
+
+(run-tests file-tests)
