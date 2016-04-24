@@ -1,6 +1,24 @@
-#+TITLE: Chapter 1
+#+TITLE: Chapter 1 Building Abstraction with Procedures
 
-* Exercise 1.1.
+* The elements of Programming
+The most important aspect of a computer language is the means with
+which we can combine simple ideas to form more complex ideas.
+
+The thre main ways of doing this are:
+
+- primitive expressions, which represent the simplest entities the language is concerned with,
+-means of combination, by which compound elements are built from simpler ones, and
+-means of abstraction, by which compound elements can be named and manipulated as units.
+
+** Expressions
+
+Expressions are valid syntax that allow the interpreter to take our
+instructions and process them in an unambigous way.
+
+In scheme this is done using list syntax where the first element in a
+list is evaluated as a function call unless it is escaped in some way.
+
+** Exercise 1.1.
 Below is a sequence of expressions. What is the result printed by
 the interpreter in response to each expression? Assume that the sequence is to
 be evaluated in the order in which it is presented.
