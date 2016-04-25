@@ -18,6 +18,23 @@ instructions and process them in an unambigous way.
 In scheme this is done using list syntax where the first element in a
 list is evaluated as a function call unless it is escaped in some way.
 
+** Naming and the Environment
+
+Programming languages is must provide a war for using names to refer
+to computational objects. We say that the /name/ identifies a /variable/
+whose /value/ is the object.
+
+In the Scheme dialect of Lisp, we name things with define.
+
+#+BEGIN_EXAMPLE
+(define size 2)
+
+(define circumference (* 2 pi radius))
+#+END_EXAMPLE
+
+*Define* is our simplest means of abstraction, it allows us to use
+simple names to refer to more complex operations.
+
 ** Exercise 1.1.
 Below is a sequence of expressions. What is the result printed by
 the interpreter in response to each expression? Assume that the sequence is to
