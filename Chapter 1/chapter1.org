@@ -20,7 +20,7 @@ list is evaluated as a function call unless it is escaped in some way.
 
 ** Naming and the Environment
 
-Programming languages is must provide a war for using names to refer
+Programming languages must provide a way for using names to refer
 to computational objects. We say that the /name/ identifies a /variable/
 whose /value/ is the object.
 
