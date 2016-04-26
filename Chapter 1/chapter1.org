@@ -35,6 +35,23 @@ In the Scheme dialect of Lisp, we name things with define.
 *Define* is our simplest means of abstraction, it allows us to use
 simple names to refer to more complex operations.
 
+** Evaluating combinations
+
+Evaluating combinations is a recursive process. Evaluating a combination consists of:
+
+- Evaluating the subexpressions of the combinations.
+- Apply the procedure of function calls
+
+Generally we will work from left to right simplifying expressions to
+their most basic form. When we meet a compound expression we will
+recurse into it until fully simplified and continue removing from left
+to right until evaluation is fully simplified. Then we can calculate
+the expression.
+
+Some expressions, such as /define/, are special forms and have their own
+rules for evaluation. In such cases you will not be able to just
+simplify and evaluate their arguments.
+
 ** Exercise 1.1.
 Below is a sequence of expressions. What is the result printed by
 the interpreter in response to each expression? Assume that the sequence is to
