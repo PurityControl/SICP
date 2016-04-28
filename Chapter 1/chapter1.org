@@ -52,6 +52,30 @@ Some expressions, such as /define/, are special forms and have their own
 rules for evaluation. In such cases you will not be able to just
 simplify and evaluate their arguments.
 
+** Compound Procedures
+
+We can define compound procedure which takes /formal parameters/.
+
+The general form for this is
+
+#+BEGIN_EXAMPLE
+(define (<name> <formal parameters>) <body>)
+#+END_EXAMPLE
+
+So the procedure square can be defined as
+
+#+BEGIN_EXAMPLE
+(define (square x)
+  (* x x))
+#+END_EXAMPLE
+
+It is then simply called as
+
+#+BEGIN_EXAMPLE
+(square 10)
+>100
+#+END_EXAMPLE
+
 ** Exercise 1.1.
 Below is a sequence of expressions. What is the result printed by
 the interpreter in response to each expression? Assume that the sequence is to
