@@ -76,6 +76,69 @@ It is then simply called as
 >100
 #+END_EXAMPLE
 
+** The substitution model for procedure application
+
+The substitution model is a way of calculating the result of a
+compound statement. It is the model that scheme uses when performing
+evaluations and is sometimes called /applicative order evaluation/.
+
+This model consists of moving from left to right and each time a
+compound statement is found recursing down into the statement to
+evaluate it. Once the results have been calculated they replace the
+compound statement.
+
+This sequence of evaluation is shown in the example below.
+
+#+BEGIN_EXAMPLE
+(define (sum-of-squares x y)
+  (+ (square x) (square y)))
+
+(define a 5)
+
+(sum-of-squares (+ a 1) (* a 2))
+
+(sum-of-squares (+ 5 1) (* 5 2))
+
+(+ (square 6) (square 10))
+
+(+ (* 6 6) (* 10 10))
+
+(+ 36 100)
+
+136
+#+END_EXAMPLE
+
+*** Normal order evaluation
+
+An alternative to /applicative order evaluation/ is /normal order
+evaluation/.
+
+This is also known as /lazy evaluation/ as any compound statements are
+only evaluated when they are actually needed. In our example above the
+evaluation is different but the results are the same. However, in some
+cases it can lead to a different result.
+
+#+BEGIN_EXAMPLE
+(define (sum-of-squares x y)
+  (+ (square x) (square y)))
+
+(define a 5)
+
+(sum-of-squares (+ a 1) (* a 2))
+
+(sum-of-squares (+ 5 1) (* 5 2))
+
+(+ (square (+ 5 1)) (square (* 5 2)))
+
+(+ (* (+ 5 1) (+ 5 1)) (* (* 5 2) (* 5 2)))
+
+(+ (* 6 6) (* 10 10))
+
+(+ 36 100)
+
+136
+#+END_EXAMPLE
+
 ** Exercise 1.1.
 Below is a sequence of expressions. What is the result printed by
 the interpreter in response to each expression? Assume that the sequence is to
