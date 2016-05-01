@@ -139,6 +139,63 @@ cases it can lead to a different result.
 136
 #+END_EXAMPLE
 
+** Conditional expressions and predicates
+
+In order to make procedures powerful we need to be able to
+conditionally execute code.
+
+In scheme there are two main ways to execute code based on
+conditions.
+
+*** Case analysis
+
+A case analysis form in scheme is a cond expression. It takes a list
+and each item in the list is a list with a condition expression and an
+execution expression. The first condition expression reached triggers
+the associated expression to be evaluated. An example of calculating
+the absolute value of a number would be:
+
+#+BEGIN_EXAMPLE
+(define (abs x)
+  (cond ((> x 0) x)
+        ((= x 0) 0)
+        ((< x 0) (- x))))
+#+END_EXAMPLE
+
+*** If statement
+
+If is a special form, it is a restricted type of conditional that can
+be used when there are precisely two cases in the case analysis. The
+general form of an if expression is
+
+#+BEGIN_EXAMPLE
+(if <predicate> <consequent> <alternative>)
+#+END_EXAMPLE
+
+This means that /abs/ could be written with an if statement
+
+#+BEGIN_EXAMPLE
+(define (abs x)
+  (if (< x 0)
+      (- x)
+      x))
+#+END_EXAMPLE
+
+*** Logical composition operations and predicates
+
+In addition to predicates such as /</, />/ and /=/ there are logical
+composition operations, which enable us to construct compound
+predicates. The three most frequently used are /and, or and not/.
+
+#+BEGIN_EXAMPLE
+(define (>= x y)
+  (or (> x y) (= x y)))
+
+or alternatively as
+
+(define (>= x y)
+  (not (< x y)))
+#+END_EXAMPLE
 ** Exercise 1.1.
 Below is a sequence of expressions. What is the result printed by
 the interpreter in response to each expression? Assume that the sequence is to
