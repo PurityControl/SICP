@@ -249,3 +249,23 @@ be evaluated in the order in which it is presented.
 >16
 #+END_EXAMPLE
 
+** Exercise 1.2
+
+Exercise 1.2.  
+Translate the following expression into prefix form
+
+\begin{equation}
+\dfrac{5 + 4 + (2 - (3 - (6 + 4/5)))}{3(6 - 2)(2 - 7)}
+\end{equation}
+
+#+BEGIN_EXAMPLE
+(/ (+ 5
+      4
+      (- 2
+        (- 3
+           (+ 6
+              (/ 4 5)))))
+   (* 3
+      (- 6 2)
+      (- 2 7)))
+#+END_EXAMPLE
