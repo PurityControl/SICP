@@ -293,9 +293,11 @@ of the squares of the two larger numbers.
 #+END_EXAMPLE
 
 ** Exercise 1.4.  
+#+BEGIN_QUOTE
 Observe that our model of evaluation allows for combinations whose operators
 are compound expressions. Use this observation to describe the behavior of
 the following procedure:
+#+END_QUOTE
 
 #+BEGIN_EXAMPLE
 (define (a-plus-abs-b a b)
