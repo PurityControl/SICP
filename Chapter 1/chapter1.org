@@ -292,3 +292,15 @@ of the squares of the two larger numbers.
 (= 41 (sum-square-largest 5 3 4))
 #+END_EXAMPLE
 
+** Exercise 1.4.  
+Observe that our model of evaluation allows for combinations whose operators
+are compound expressions. Use this observation to describe the behavior of
+the following procedure:
+
+#+BEGIN_EXAMPLE
+(define (a-plus-abs-b a b)
+  ((if (> b 0) + -) a b))
+#+END_EXAMPLE
+
+it adds the absolute value of b to a by adding it to a if b is positive
+or taking away from a if b is negative.
