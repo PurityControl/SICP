@@ -197,9 +197,11 @@ or alternatively as
   (not (< x y)))
 #+END_EXAMPLE
 ** Exercise 1.1.
+#+BEGIN_QUOTE
 Below is a sequence of expressions. What is the result printed by
 the interpreter in response to each expression? Assume that the sequence is to
 be evaluated in the order in which it is presented.
+#+END_QUOTE
 
 #+BEGIN_EXAMPLE
 10
@@ -250,11 +252,13 @@ be evaluated in the order in which it is presented.
 #+END_EXAMPLE
 
 ** Exercise 1.2
+#+BEGIN_QUOTE
 Translate the following expression into prefix form
 
 \begin{equation}
 \dfrac{5 + 4 + (2 - (3 - (6 + 4/5)))}{3(6 - 2)(2 - 7)}
 \end{equation}
+#+END_QUOTE
 
 #+BEGIN_EXAMPLE
 (/ (+ 5
@@ -269,8 +273,10 @@ Translate the following expression into prefix form
 #+END_EXAMPLE
 
 ** Exercise 1.3.
+#+BEGIN_QUOTE
 Define a procedure that takes three numbers as arguments and returns the sum
 of the squares of the two larger numbers.
+#+END_QUOTE
 
 #+BEGIN_EXAMPLE
 (define (sum-square-largest a b c)
@@ -292,7 +298,7 @@ of the squares of the two larger numbers.
 (= 41 (sum-square-largest 5 3 4))
 #+END_EXAMPLE
 
-** Exercise 1.4.  
+** Exercise 1.4.
 #+BEGIN_QUOTE
 Observe that our model of evaluation allows for combinations whose operators
 are compound expressions. Use this observation to describe the behavior of
