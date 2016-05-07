@@ -356,3 +356,60 @@ Therefore the runtion with return 0 as the if only evaluates consequent.
 With applicative-order evaluation the arguments will be evaluated prior to
 the test function being run and when the y argument is evaluated it will
 start an infinite recursion.
+
+** Example: Square Roots by Newton's Method
+
+A common way to calculate square roots is Newtons method of successive
+approximations.
+This method states that if we have a guess ~y~ for the ~sqrt~ of ~x~ we can
+create a better guess by averaging ~y~ with ~x / y~.
+
+This can be expressed in a function that wishes other functions were
+available. These imaginary functions that are called can then be
+written subsequently
+
+#+BEGIN_EXAMPLE
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x)
+      guess
+      (sqrt-iter (improve guess x)
+                 x)))
+#+END_EXAMPLE
+
+This function eloquently describes how Newton's method is
+calculated at a high level of abstraction.
+
+It also calls itself recursively eliminating the need to use looping
+you would see in other common languages.
+
+We can now write the ~good-enough?~ and ~improve~ functions that this
+funciton depends upon to work.
+
+#+BEGIN_EXAMPLE
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.001))
+#+END_EXAMPLE
+
+This allows us to now use ~sqrt~ in the same way as we can use any other
+function.
+
+#+BEGIN_EXAMPLE
+(sqrt 9)
+>3.00009155413138
+
+(sqrt (+ 100 37))
+>11.704699917758145
+
+(sqrt (+ (sqrt 2) (sqrt 3)))
+>1.7739279023207892
+
+(square (sqrt 1000))
+>1000.000369924366
+#+END_EXAMPLE
+
