@@ -413,3 +413,56 @@ function.
 >1000.000369924366
 #+END_EXAMPLE
 
+** Exercise 1.6.
+#+BEGIN_QUOTE
+Alyssa P. Hacker doesn't see why if needs to be provided as a
+special form. ``Why can't I just define it as an ordinary procedure in terms
+of cond?'' she asks. Alyssa's friend Eva Lu Ator claims this can indeed be
+done, and she defines a new version of if:
+
+#+BEGIN_EXAMPLE
+(define (good-enough? guess x)
+  "always return true to prove function never terminates regardles of the predicate"
+  #t)
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (new-if predicate then-clause else-clause)
+  (cond (predicate then-clause)
+        (else else-clause)))
+#+END_EXAMPLE
+
+Eva demonstrates the program for Alyssa:
+
+#+BEGIN_EXAMPLE
+(new-if (= 2 3) 0 5)
+;5
+
+(new-if (= 1 1) 0 5)
+;0
+#+END_EXAMPLE
+
+Delighted, Alyssa uses new-if to rewrite the square-root program:
+
+#+BEGIN_EXAMPLE
+(define (sqrt-iter guess x)
+  (new-if (good-enough? guess x)
+          guess
+          (sqrt-iter (improve guess x)
+                     x)))
+
+;this will not terminate
+;(srt-iter 1 2)
+#+END_EXAMPLE
+
+What happens when Alyssa attempts to use this to compute square roots? Explain.
+#+END_QUOTE
+
+As the consequent and alternative are formal parameters to the new function
+both will be evaluated. Because the recursive call (the alternative) is
+evaluated regardless of the outcome of the predicate the function will never
+terminate.
