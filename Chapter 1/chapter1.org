@@ -462,7 +462,7 @@ Delighted, Alyssa uses new-if to rewrite the square-root program:
 What happens when Alyssa attempts to use this to compute square roots? Explain.
 #+END_QUOTE
 
-As the consequent and alternative afer fomal parameters to the new function
+As the consequent and alternative are formal parameters to the new function
 both will be evaluated. Because the recursive call (the alternative) is
 evaluated regardless of the outcome of the predicate the function will never
 terminate.
