@@ -583,3 +583,28 @@ cube-root procedures.)
 (run-tests file-tests)
 #+END_EXAMPLE
 
+** Procedures as black box abstractions
+
+When we look at the definition of our square root problem we can see
+that it breaks up into a number of subproblems. These subproblems are
+autonomous units that are defined by their own procedure.
+
+- sqrt
+  - sqrt-iter
+    - good-enough?
+      - square
+      - abs
+    - improve
+      - average
+
+The importance of this decomposition strategy is not simply one of
+dividing the program into parts. Rather, it is crucial that each
+procedure accomplishes an identifiable task that can be used as a
+module in defining other procedures.
+This means that ~good-enough?~ is not concerned with how square
+calculates its result, just with the fact that it produces the
+answer. Indeed, as far as the good-enough? procedure is concerned,
+square is not quite a procedure but rather an abstraction of a
+procedure, a so-called procedural abstraction. At this level of
+abstraction, any procedure that computes the square is equally good.
+
