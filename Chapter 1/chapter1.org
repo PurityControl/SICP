@@ -622,3 +622,59 @@ expressions for which a binding defines a name is called the scope of
 that name. In a procedure definition, the bound variables declared as
 the formal parameters of the procedure have the body of the procedure
 as their scope.
+
+*** Internal definitions and block structure
+
+We have one kind of name isolation available to us so far: The formal
+parameters of a procedure are local to the body of the procedure. The
+square-root program illustrates another way in which we would like to
+control the use of names.
+
+If we look at our ~sqrt~ function we have an addtional problem. The
+procedures ~sqrt-iter~, ~good-enough?~, and ~improve~ are an abstraction of
+the parts of the ~sqrt~ function. Maybe other programs require their own
+~good-enough?~ function and their function needs to coexist with our
+own.
+
+This can be done by making the ~procedural abstractions~ local to the
+~sqrt~ function by nesting definitions. Such a nesting is called ~block
+structure~.
+
+#+BEGIN_EXAMPLE
+(define (sqrt x)
+  (define (good-enough? guess x)
+    (< (abs (- (square guess) x)) 0.001))
+  (define (improve guess x)
+    (average guess (/ x guess)))
+  (define (sqrt-iter guess x)
+    (if (good-enough? guess x)
+        guess
+        (sqrt-iter (improve guess x) x)))
+  (sqrt-iter 1.0 x))
+#+END_EXAMPLE
+
+Block structure has two benefits. The first has already been discussed
+and is one of namespacing.
+
+The second is that the parameters passed into to ~sqrt~ are in scope for
+all of the definitions nested in the block structure. This simplifies
+the nested functions as these variables do not need to be passed into
+them as formal parameters. Instead these values are accessed as free
+variables in the internal definitions. This disclipline is called
+lexical scoping.
+
+Using this techique the example can be rewritten as:
+
+#+BEGIN_EXAMPLE
+(define (sqrt x)
+  (define (good-enough? guess)
+    (< (abs (- (square guess) x)) 0.001))
+  (define (improve guess)
+    (average guess (/ x guess)))
+  (define (sqrt-iter guess)
+    (if (good-enough? guess)
+        guess
+        (sqrt-iter (improve guess))))
+  (sqrt-iter 1.0))
+#+END_EXAMPLE
+
