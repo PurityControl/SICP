@@ -1,6 +1,7 @@
 #+TITLE: Chapter 1 Building Abstraction with Procedures
 
-* The elements of Programming
+* Building Abstractions with Procedures
+** The elements of Programming
 The most important aspect of a computer language is the means with
 which we can combine simple ideas to form more complex ideas.
 
@@ -10,7 +11,7 @@ The thre main ways of doing this are:
 - *means of combination*, by which compound elements are built from simpler ones, and
 - *means of abstraction*, by which compound elements can be named and manipulated as units.
 
-** Expressions
+*** Expressions
 
 Expressions are valid syntax that allow the interpreter to take our
 instructions and process them in an unambigous way.
@@ -18,7 +19,7 @@ instructions and process them in an unambigous way.
 In scheme this is done using list syntax where the first element in a
 list is evaluated as a function call unless it is escaped in some way.
 
-** Naming and the Environment
+*** Naming and the Environment
 
 Programming languages must provide a way for using names to refer
 to computational objects. We say that the /name/ identifies a /variable/
@@ -35,7 +36,7 @@ In the Scheme dialect of Lisp, we name things with define.
 *Define* is our simplest means of abstraction, it allows us to use
 simple names to refer to more complex operations.
 
-** Evaluating combinations
+*** Evaluating combinations
 
 Evaluating combinations is a recursive process. Evaluating a combination consists of:
 
@@ -52,7 +53,7 @@ Some expressions, such as /define/, are special forms and have their own
 rules for evaluation. In such cases you will not be able to just
 simplify and evaluate their arguments.
 
-** Compound Procedures
+*** Compound Procedures
 
 We can define compound procedure which takes /formal parameters/.
 
@@ -76,7 +77,7 @@ It is then simply called as
 >100
 #+END_EXAMPLE
 
-** The substitution model for procedure application
+*** The substitution model for procedure application
 
 The substitution model is a way of calculating the result of a
 compound statement. It is the model that scheme uses when performing
@@ -108,7 +109,7 @@ This sequence of evaluation is shown in the example below.
 136
 #+END_EXAMPLE
 
-*** Normal order evaluation
+**** Normal order evaluation
 
 An alternative to /applicative order evaluation/ is /normal order
 evaluation/.
@@ -139,7 +140,7 @@ cases it can lead to a different result.
 136
 #+END_EXAMPLE
 
-** Conditional expressions and predicates
+*** Conditional expressions and predicates
 
 In order to make procedures powerful we need to be able to
 conditionally execute code.
@@ -147,7 +148,7 @@ conditionally execute code.
 In scheme there are two main ways to execute code based on
 conditions.
 
-*** Case analysis
+**** Case analysis
 
 A case analysis form in scheme is a cond expression. It takes a list
 and each item in the list is a list with a condition expression and an
@@ -162,7 +163,7 @@ the absolute value of a number would be:
         ((< x 0) (- x))))
 #+END_EXAMPLE
 
-*** If statement
+**** If statement
 
 If is a special form, it is a restricted type of conditional that can
 be used when there are precisely two cases in the case analysis. The
@@ -181,7 +182,7 @@ This means that /abs/ could be written with an if statement
       x))
 #+END_EXAMPLE
 
-*** Logical composition operations and predicates
+**** Logical composition operations and predicates
 
 In addition to predicates such as /</, />/ and /=/ there are logical
 composition operations, which enable us to construct compound
@@ -196,7 +197,8 @@ or alternatively as
 (define (>= x y)
   (not (< x y)))
 #+END_EXAMPLE
-** Exercise 1.1.
+
+*** Exercise 1.1.
 #+BEGIN_QUOTE
 Below is a sequence of expressions. What is the result printed by
 the interpreter in response to each expression? Assume that the sequence is to
@@ -251,7 +253,7 @@ be evaluated in the order in which it is presented.
 >16
 #+END_EXAMPLE
 
-** Exercise 1.2
+*** Exercise 1.2
 #+BEGIN_QUOTE
 Translate the following expression into prefix form
 
@@ -272,7 +274,7 @@ Translate the following expression into prefix form
       (- 2 7)))
 #+END_EXAMPLE
 
-** Exercise 1.3.
+*** Exercise 1.3.
 #+BEGIN_QUOTE
 Define a procedure that takes three numbers as arguments and returns the sum
 of the squares of the two larger numbers.
@@ -298,7 +300,7 @@ of the squares of the two larger numbers.
 (= 41 (sum-square-largest 5 3 4))
 #+END_EXAMPLE
 
-** Exercise 1.4.
+*** Exercise 1.4.
 #+BEGIN_QUOTE
 Observe that our model of evaluation allows for combinations whose operators
 are compound expressions. Use this observation to describe the behavior of
@@ -313,7 +315,7 @@ the following procedure:
 it adds the absolute value of b to a by adding it to a if b is positive
 or taking away from a if b is negative.
 
-** Exercise 1.5. 
+*** Exercise 1.5. 
 #+BEGIN_QUOTE
 Ben Bitdiddle has invented a test to determine whether the interpreter he
 is faced with is using applicative-order evaluation or normal-order
@@ -357,7 +359,7 @@ With applicative-order evaluation the arguments will be evaluated prior to
 the test function being run and when the y argument is evaluated it will
 start an infinite recursion.
 
-** Example: Square Roots by Newton's Method
+*** Example: Square Roots by Newton's Method
 
 A common way to calculate square roots is Newtons method of successive
 approximations.
@@ -413,7 +415,7 @@ function.
 >1000.000369924366
 #+END_EXAMPLE
 
-** Exercise 1.6.
+*** Exercise 1.6.
 #+BEGIN_QUOTE
 Alyssa P. Hacker doesn't see why if needs to be provided as a
 special form. ``Why can't I just define it as an ordinary procedure in terms
@@ -467,7 +469,7 @@ both will be evaluated. Because the recursive call (the alternative) is
 evaluated regardless of the outcome of the predicate the function will never
 terminate.
 
-** Exercise 1.7.
+*** Exercise 1.7.
 #+BEGIN_QUOTE
 The good-enough? test used in computing square roots will not be very
 effective for finding the square roots of very small numbers. Also, in
@@ -523,7 +525,7 @@ The problem with large numbers is such that the accuracy of the delta
 Therefore for sufficiently large numbers the algorithm fails to terminate
 in reasonable time.
 
-** Exercise 1.8.
+*** Exercise 1.8.
 #+BEGIN_QUOTE
 Newton's method for cube roots is based on the fact that if y is an
 approximation to the cube root of x, then a better approximation is
@@ -583,7 +585,7 @@ cube-root procedures.)
 (run-tests file-tests)
 #+END_EXAMPLE
 
-** Procedures as black box abstractions
+*** Procedures as black box abstractions
 
 When we look at the definition of our square root problem we can see
 that it breaks up into a number of subproblems. These subproblems are
@@ -608,7 +610,7 @@ square is not quite a procedure but rather an abstraction of a
 procedure, a so-called procedural abstraction. At this level of
 abstraction, any procedure that computes the square is equally good.
 
-*** Local Names
+**** Local Names
 
 A formal parameter of a procedure has a very special role in the
 procedure definition, in that it doesn't matter what name the formal
@@ -623,7 +625,7 @@ that name. In a procedure definition, the bound variables declared as
 the formal parameters of the procedure have the body of the procedure
 as their scope.
 
-*** Internal definitions and block structure
+**** Internal definitions and block structure
 
 We have one kind of name isolation available to us so far: The formal
 parameters of a procedure are local to the body of the procedure. The
@@ -677,4 +679,6 @@ Using this techique the example can be rewritten as:
         (sqrt-iter (improve guess))))
   (sqrt-iter 1.0))
 #+END_EXAMPLE
+
+
 
