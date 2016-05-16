@@ -792,7 +792,7 @@ tail-recursive. With a tail-recursive implementation, iteration can be
 expressed using the ordinary procedure call mechanism, so that special
 iteration constructs are useful only as syntactic sugar.
 
-*** Exercise 1.9. 
+*** Exercise 1.9.
 #+BEGIN_QUOTE
 Each of the following two procedures defines a method for adding two
 positive integers in terms of the procedures inc, which increments its
