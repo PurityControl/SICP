@@ -841,6 +841,193 @@ The second method is iterative
 9
 #+END_EXAMPLE
 
+*** Exercise 1.10.
+#+BEGIN_QUOTE
+The following procedure computes a mathematical function called
+Ackermann's function.
+
+#+BEGIN_EXAMPLE
+(define (A x y)
+  (cond ((= y 0) 0)
+        ((= x 0) (* 2 y))
+        ((= y 1) 2)
+        (else (A (- x 1)
+                 (A x (- y 1))))))
+#+END_EXAMPLE
+
+What are the values of the following expressions?
+
+#+BEGIN_EXAMPLE
+(A 1 10)
+#+END_EXAMPLE
+
+#+END_QUOTE
+
+#+BEGIN_EXAMPLE
+(A 0
+  (A 1 9))
+
+(A 0 
+  (A 0
+     (A 1 8)))
+
+(A 0
+   (A 0
+      (A 0
+         (A 1 7))))
+
+(A 0
+   (A 0
+      (A 0
+         (A 0
+            (A 1 6)))))
+
+(A 0
+   (A 0
+      (A 0
+         (A 0
+            (A 0
+               (A 1 5))))))
+
+(A 0
+   (A 0
+      (A 0
+         (A 0
+            (A 0
+               (A 0
+                  (A 1 4)))))))
+
+(A 0
+   (A 0 
+      (A 0
+         (A 0
+            (A 0
+               (A 0
+                  (A 0
+                     (A 1 3))))))))
+
+(A 0
+   (A 0
+      (A 0
+         (A 0
+            (A 0
+               (A 0
+                  (A 0
+                     (A 0
+                        (A 1 2)))))))))
+
+(A 0
+   (A 0
+      (A 0
+         (A 0
+            (A 0
+               (A 0
+                  (A 0
+                     (A 0
+                        (A 0 
+                           (A 1 1)))))))))
+
+(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 2)))))))))
+(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 4))))))))
+(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 (A 0 8)))))))
+(A 0 (A 0 (A 0 (A 0 (A 0 (A 0 16))))))
+(A 0 (A 0 (A 0 (A 0 (A 0 32)))))
+(A 0 (A 0 (A 0 (A 0 64))))
+(A 0 (A 0 (A 0 128)))
+(A 0 (A 0 256))
+(A 0 512)
+
+1024
+#+END_EXAMPLE
+
+#+BEGIN_QUOTE
+(A 2 4)
+#+END_QUOTE
+
+#+BEGIN_EXAMPLE
+(A 2 4)
+(A 1 (A 2 3))
+(A 1 (A 1 (A 2 2)))
+(A 1 (A 1 (A 1 (A 2 1))))
+(A 1 (A 1 (A 1 2)))
+(A 1 (A 1 (A 0 (A 1 1))))
+(A 1 (A 1 (A 0 2)))
+(A 1 (A 1 4))
+(A 1 (A 0 (A 1 3)))
+(A 1 (A 0 (A 0 (A 1 2))))
+(A 1 (A 0 (A 0 (A 0 (A 1 1)))))
+(A 1 16)
+
+given problem above (A 1 16) = 2^16 
+65536
+#+END_EXAMPLE
+
+#+BEGIN_QUOTE
+(A 3 3)
+#+END_QUOTE
+
+#+BEGIN_EXAMPLE
+(A 3 3)
+(A 2 (A 3 2))
+(A 2 (A 2 (A 3 1)))
+(A 2 (A 2 2))
+(A 2 (A 1 (A 2 1)))
+(A 2 (A 1 2))
+(A 2 (A 0 (A 1 1)))
+(A 2 (A 0 2))
+(A 2 4)
+
+see problem above
+65536
+#+END_EXAMPLE
+
+
+#+BEGIN_QUOTE
+Consider the following procedures, where A is the procedure defined above:
+
+(define (f n) (A 0 n))
+
+(define (g n) (A 1 n))
+
+(define (h n) (A 2 n))
+
+(define (k n) (* 5 n n))
+
+Give concise mathematical definitions for the functions computed by the
+procedures f, g, and h for positive integer values of n. For example,
+(k n) computes 5n^2. 
+
+#+END_QUOTE
+
+#+BEGIN_EXAMPLE
+(define (f n) (A 0 n))
+#+END_EXAMPLE
+\begin{equation}
+2n
+\end{equation}
+
+#+BEGIN_EXAMPLE
+(define (g n) (A 1 n))
+#+END_EXAMPLE
+\begin{equation}
+2^n
+\end{equation}
+
+#+BEGIN_EXAMPLE
+(define (h n) (A 2 n))
+#+END_EXAMPLE
+\begin{equation}
+(2^n)^n
+\end{equation}
+
+#+BEGIN_EXAMPLE
+(define (k n) (* 5 n n))
+#+END_EXAMPLE
+
+\begin{equation}
+5n^2
+\end{equation}
+
 
 
 
