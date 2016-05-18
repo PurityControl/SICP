@@ -1030,6 +1030,47 @@ procedures f, g, and h for positive integer values of n. For example,
 5n^2
 \end{equation}
 
+*** Tree Recursion
+
+Another common pattern of computation is called tree recursion. As an
+example, consider computing the sequence of Fibonacci numbers, in
+which each number is the sum of the preceding two:
+
+#+BEGIN_EXAMPLE
+(define (fib n)
+  (cond ((= n 0) 0)
+        ((= n 1) 1)
+        (else (+ (fib (- n 1))
+                 (fib (- n 2))))))
+#+END_EXAMPLE
+
+Thus, the process uses a number of steps that grows exponentially with
+the input. On the other hand, the space required grows only linearly
+with the input, because we need keep track only of which nodes are
+above us in the tree at any point in the computation. In general, the
+number of steps required by a tree-recursive process will be
+proportional to the number of nodes in the tree, while the space
+required will be proportional to the maximum depth of the tree.
+
+We can also formulate an iterative process for computing the Fibonacci
+numbers. The idea is to use a pair of integers a and b, initialized to
+Fib(1) = 1 and Fib(0) = 0, and to repeatedly apply the simultaneous
+transformations
+
+#+BEGIN_EXAMPLE
+(define (fib n)
+  (fib-iter 1 0 n))
+
+(define (fib-iter a b count)
+  (if (= count 0)
+      b
+      (fib-iter (+ a b) a (- count 1))))
+#+END_EXAMPLE
+
+One should not conclude from this that tree-recursive processes are
+useless. When we consider processes that operate on hierarchically
+structured data rather than numbers, we will find that tree recursion
+is a natural and powerful tool.
 
 
 
