@@ -1100,9 +1100,9 @@ coins. Consider this reduction rule carefully, and convince yourself
 that we can use it to describe an algorithm if we specify the
 following degenerate cases:
 
-- If a is exactly 0, we should count that as 1 way to make change.
-- If a is less than 0, we should count that as 0 ways to make change.
-- If n is 0, we should count that as 0 ways to make change.
+- If ~a~ is exactly 0, we should count that as 1 way to make change.
+- If ~a~ is less than 0, we should count that as 0 ways to make change.
+- If ~n~ is 0, we should count that as 0 ways to make change.
 
 We can easily translate this description into a recursive procedure:
 
