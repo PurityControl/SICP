@@ -1072,7 +1072,8 @@ useless. When we consider processes that operate on hierarchically
 structured data rather than numbers, we will find that tree recursion
 is a natural and powerful tool.
 
-**** TODO Example - Counting Change
+
+**** Example - Counting Change
 
 Writing a procedure to compute the number of ways to change any given
 amount of money can be done trivially as a recursive process.
